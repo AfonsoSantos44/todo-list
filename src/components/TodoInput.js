@@ -13,8 +13,8 @@ const TodoInput = ({ userInput, updateInput = () => {}, addItem }) => {
         onChange={(e) => updateInput(e.target.value)}
         onKeyPress={(e) => e.key === 'Enter' && addItem()}
         style={{
-          backgroundColor: 'rgba(58, 58, 60, 0.8)',
-          border: '1px solid rgba(84, 84, 88, 0.4)',
+          backgroundColor: 'rgba(72, 72, 74, 0.8)',
+          border: '1px solid rgba(99, 99, 102, 0.5)',
           borderRadius: '12px',
           color: '#ffffff',
           fontSize: '1rem',
@@ -25,13 +25,13 @@ const TodoInput = ({ userInput, updateInput = () => {}, addItem }) => {
           fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
         }}
         onFocus={(e) => {
-          e.target.style.backgroundColor = 'rgba(58, 58, 60, 1)';
+          e.target.style.backgroundColor = 'rgba(72, 72, 74, 1)';
           e.target.style.borderColor = 'rgba(10, 132, 255, 0.6)';
           e.target.style.boxShadow = '0 0 0 4px rgba(10, 132, 255, 0.1)';
         }}
         onBlur={(e) => {
-          e.target.style.backgroundColor = 'rgba(58, 58, 60, 0.8)';
-          e.target.style.borderColor = 'rgba(84, 84, 88, 0.4)';
+          e.target.style.backgroundColor = 'rgba(72, 72, 74, 0.8)';
+          e.target.style.borderColor = 'rgba(99, 99, 102, 0.5)';
           e.target.style.boxShadow = 'none';
         }}
       />

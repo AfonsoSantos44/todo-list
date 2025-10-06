@@ -16,14 +16,14 @@ const TodoItem = ({ item, index, deleteItem, editItem }) => {
         display: "flex",
         alignItems: "center",
         backgroundColor: "transparent",
-        borderBottom: "1px solid rgba(84, 84, 88, 0.2)",
+        borderBottom: "1px solid rgba(99, 99, 102, 0.3)",
         padding: "16px 24px",
         transition: "all 0.2s ease",
         fontSize: "1rem",
         fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
       }}
       onMouseEnter={(e) => {
-        e.target.style.backgroundColor = 'rgba(58, 58, 60, 0.3)';
+        e.target.style.backgroundColor = 'rgba(72, 72, 74, 0.4)';
       }}
       onMouseLeave={(e) => {
         e.target.style.backgroundColor = 'transparent';

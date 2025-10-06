@@ -54,7 +54,7 @@ class App extends Component {
   render() {
     return (
       <div style={{ 
-        background: '#000000',
+        background: 'linear-gradient(135deg, #1a1a1a 0%, #2d2d30 100%)',
         minHeight: '100vh',
         padding: '40px 20px',
         fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
@@ -63,11 +63,11 @@ class App extends Component {
           <Row>
             <Col md={{ span: 6, offset: 3 }} lg={{ span: 4, offset: 4 }}>
               <div style={{
-                background: 'rgba(28, 28, 30, 0.98)',
+                background: 'rgba(40, 40, 42, 0.95)',
                 borderRadius: '20px',
                 padding: '0',
-                border: '1px solid rgba(84, 84, 88, 0.3)',
-                boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
+                border: '1px solid rgba(99, 99, 102, 0.4)',
+                boxShadow: '0 8px 32px rgba(0, 0, 0, 0.25)',
                 backdropFilter: 'blur(20px)',
                 overflow: 'hidden'
               }}>
