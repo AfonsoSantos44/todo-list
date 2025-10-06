@@ -1,8 +1,5 @@
 // components/TodoItem.js
 import React from "react";
-import ListGroup from "react-bootstrap/ListGroup";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
 
 const TodoItem = ({ item, index, deleteItem, editItem }) => {
   const [checked, setChecked] = React.useState(false);
