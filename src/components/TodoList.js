@@ -1,5 +1,4 @@
 // components/TodoList.js
-import ListGroup from "react-bootstrap/ListGroup";
 import TodoItem from "./TodoItem";
 
 const TodoList = ({ list = [], deleteItem, editItem }) => {
