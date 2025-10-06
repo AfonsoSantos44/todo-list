@@ -54,68 +54,85 @@ class App extends Component {
   render() {
     return (
       <div style={{ 
-        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', 
+        background: '#000000',
         minHeight: '100vh',
-        padding: '20px 0'
+        padding: '40px 20px',
+        fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
       }}>
         <Container>
           <Row>
-            <Col md={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
+            <Col md={{ span: 6, offset: 3 }} lg={{ span: 4, offset: 4 }}>
               <div style={{
-                background: 'rgba(255, 255, 255, 0.95)',
+                background: 'rgba(28, 28, 30, 0.98)',
                 borderRadius: '20px',
-                padding: '30px',
-                boxShadow: '0 15px 35px rgba(0, 0, 0, 0.1)',
-                backdropFilter: 'blur(10px)'
+                padding: '0',
+                border: '1px solid rgba(84, 84, 88, 0.3)',
+                boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
+                backdropFilter: 'blur(20px)',
+                overflow: 'hidden'
               }}>
-                <Row>
-                  <Col>
-                    <h1 style={{
+                {/* Header */}
+                <div style={{
+                  padding: '24px 24px 16px 24px',
+                  borderBottom: '1px solid rgba(84, 84, 88, 0.2)'
+                }}>
+                  <h1 style={{
+                    textAlign: 'center',
+                    fontSize: '1.75rem',
+                    fontWeight: '600',
+                    color: '#ffffff',
+                    margin: '0',
+                    letterSpacing: '-0.5px'
+                  }}>
+                    Reminders
+                  </h1>
+                  <p style={{
+                    textAlign: 'center',
+                    fontSize: '0.9rem',
+                    color: '#8e8e93',
+                    margin: '4px 0 0 0'
+                  }}>
+                    {this.state.todoList.length} {this.state.todoList.length === 1 ? 'task' : 'tasks'}
+                  </p>
+                </div>
+
+                {/* Input Section */}
+                <div style={{ padding: '20px 24px' }}>
+                  <TodoInput
+                    userInput={this.state.userInput}
+                    updateInput={this.handleInputChange}
+                    addItem={this.addItem}
+                  />
+                </div>
+
+                {/* Todo List */}
+                <div style={{ 
+                  maxHeight: '60vh',
+                  overflowY: 'auto',
+                  WebkitOverflowScrolling: 'touch'
+                }}>
+                  {this.state.todoList.length === 0 ? (
+                    <div style={{
                       textAlign: 'center',
-                      fontSize: '2.5rem',
-                      fontWeight: '700',
-                      color: '#2c3e50',
-                      marginBottom: '30px',
-                      textShadow: '2px 2px 4px rgba(0,0,0,0.1)'
+                      color: '#8e8e93',
+                      fontSize: '1rem',
+                      padding: '60px 24px',
+                      lineHeight: '1.5'
                     }}>
-                      📝 My Todo List
-                    </h1>
-                  </Col>
-                </Row>
-
-                <Row>
-                  <Col>
-                    <div style={{ marginBottom: '25px' }}>
-                      <TodoInput
-                        userInput={this.state.userInput}
-                        updateInput={this.handleInputChange}
-                        addItem={this.addItem}
-                      />
-                    </div>
-                  </Col>
-                </Row>
-
-                <Row>
-                  <Col>
-                    {this.state.todoList.length === 0 ? (
-                      <div style={{
-                        textAlign: 'center',
-                        color: '#7f8c8d',
-                        fontSize: '1.1rem',
-                        padding: '40px 20px',
-                        fontStyle: 'italic'
-                      }}>
-                        🎯 No tasks yet. Add one above to get started!
+                      <div style={{ fontSize: '3rem', marginBottom: '16px' }}>📝</div>
+                      <div style={{ fontWeight: '500' }}>No Reminders</div>
+                      <div style={{ fontSize: '0.85rem', marginTop: '4px' }}>
+                        Add a task to get started
                       </div>
-                    ) : (
-                      <TodoList
-                        list={this.state.todoList}
-                        deleteItem={this.deleteItem}
-                        editItem={this.editItem}
-                      />
-                    )}
-                  </Col>
-                </Row>
+                    </div>
+                  ) : (
+                    <TodoList
+                      list={this.state.todoList}
+                      deleteItem={this.deleteItem}
+                      editItem={this.editItem}
+                    />
+                  )}
+                </div>
               </div>
             </Col>
           </Row>

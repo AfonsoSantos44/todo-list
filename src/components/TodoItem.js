@@ -11,101 +11,122 @@ const TodoItem = ({ item, index, deleteItem, editItem }) => {
     setChecked(!checked);
   };
   return (
-    <ListGroup.Item
+    <div
       style={{
         display: "flex",
-        justifyContent: "space-between",
         alignItems: "center",
-        backgroundColor: "#f8f9fc",
-        border: "1px solid #e3f2fd",
-        borderRadius: "12px",
-        marginBottom: "10px",
-        padding: "15px 20px",
-        boxShadow: "0 2px 8px rgba(0,0,0,0.05)",
-        transition: "all 0.3s ease",
-        fontSize: "1.1rem"
+        backgroundColor: "transparent",
+        borderBottom: "1px solid rgba(84, 84, 88, 0.2)",
+        padding: "16px 24px",
+        transition: "all 0.2s ease",
+        fontSize: "1rem",
+        fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
       }}
       onMouseEnter={(e) => {
-        e.target.style.transform = 'translateY(-2px)';
-        e.target.style.boxShadow = '0 4px 15px rgba(0,0,0,0.1)';
-        e.target.style.backgroundColor = '#ffffff';
+        e.target.style.backgroundColor = 'rgba(58, 58, 60, 0.3)';
       }}
       onMouseLeave={(e) => {
-        e.target.style.transform = 'translateY(0)';
-        e.target.style.boxShadow = '0 2px 8px rgba(0,0,0,0.05)';
-        e.target.style.backgroundColor = '#f8f9fc';
+        e.target.style.backgroundColor = 'transparent';
       }}
     >
+      {/* Checkbox */}
+      <div
+        onClick={handleChange}
+        style={{
+          width: '22px',
+          height: '22px',
+          borderRadius: '50%',
+          border: checked ? 'none' : '2px solid rgba(142, 142, 147, 0.6)',
+          backgroundColor: checked ? '#007AFF' : 'transparent',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginRight: '16px',
+          cursor: 'pointer',
+          transition: 'all 0.2s ease',
+          flexShrink: 0
+        }}
+      >
+        {checked && (
+          <span style={{ color: 'white', fontSize: '14px', fontWeight: 'bold' }}>✓</span>
+        )}
+      </div>
+
+      {/* Task Text */}
       <span style={{ 
-        color: '#2c3e50', 
-        fontWeight: '500',
+        color: checked ? '#8e8e93' : '#ffffff',
+        fontWeight: '400',
         flex: 1,
-        marginRight: '15px',
-        display: 'flex',
-        alignItems: 'center'
+        textDecoration: checked ? 'line-through' : 'none',
+        opacity: checked ? 0.6 : 1,
+        transition: 'all 0.3s ease',
+        lineHeight: '1.4'
       }}>
-        <Form.Check 
-          type="checkbox"
-          checked={checked} 
-          onChange={handleChange}
-          style={{ marginRight: '10px' }}
-        />
-        <span style={{ 
-          textDecoration: checked ? 'line-through' : 'none',
-          opacity: checked ? 0.6 : 1,
-          transition: 'all 0.3s ease'
-        }}>
-          {checked ? '✅' : '⏳'} {item.value}
-        </span>
+        {item.value}
       </span>
-      <div>
-        <Button
+
+      {/* Action Buttons */}
+      <div style={{ display: 'flex', gap: '8px', marginLeft: '16px' }}>
+        <button
           onClick={() => editItem(index)}
           style={{
-            marginRight: "8px",
-            backgroundColor: "#28a745",
-            border: "none",
-            borderRadius: "8px",
-            padding: "6px 12px",
-            fontSize: "0.9rem",
-            fontWeight: "500",
-            boxShadow: "0 2px 6px rgba(40, 167, 69, 0.3)"
+            backgroundColor: 'rgba(255, 149, 0, 0.1)',
+            border: '1px solid rgba(255, 149, 0, 0.3)',
+            borderRadius: '8px',
+            padding: '6px 12px',
+            fontSize: '0.85rem',
+            fontWeight: '500',
+            color: '#FF9500',
+            cursor: 'pointer',
+            transition: 'all 0.2s ease',
+            fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
           }}
-          onMouseEnter={(e) => {
-            e.target.style.backgroundColor = "#218838";
-            e.target.style.transform = "scale(1.05)";
+          onMouseDown={(e) => {
+            e.target.style.backgroundColor = 'rgba(255, 149, 0, 0.2)';
+            e.target.style.transform = 'scale(0.95)';
+          }}
+          onMouseUp={(e) => {
+            e.target.style.backgroundColor = 'rgba(255, 149, 0, 0.1)';
+            e.target.style.transform = 'scale(1)';
           }}
           onMouseLeave={(e) => {
-            e.target.style.backgroundColor = "#28a745";
-            e.target.style.transform = "scale(1)";
+            e.target.style.backgroundColor = 'rgba(255, 149, 0, 0.1)';
+            e.target.style.transform = 'scale(1)';
           }}
         >
-          ✏️ Edit
-        </Button>
-        <Button
+          Edit
+        </button>
+        <button
           onClick={() => deleteItem(item.id)}
           style={{
-            backgroundColor: "#dc3545",
-            border: "none",
-            borderRadius: "8px",
-            padding: "6px 12px",
-            fontSize: "0.9rem",
-            fontWeight: "500",
-            boxShadow: "0 2px 6px rgba(220, 53, 69, 0.3)"
+            backgroundColor: 'rgba(255, 59, 48, 0.1)',
+            border: '1px solid rgba(255, 59, 48, 0.3)',
+            borderRadius: '8px',
+            padding: '6px 12px',
+            fontSize: '0.85rem',
+            fontWeight: '500',
+            color: '#FF3B30',
+            cursor: 'pointer',
+            transition: 'all 0.2s ease',
+            fontFamily: '-apple-system, BlinkMacSystemFont, "Segue UI", Roboto, sans-serif'
           }}
-          onMouseEnter={(e) => {
-            e.target.style.backgroundColor = "#c82333";
-            e.target.style.transform = "scale(1.05)";
+          onMouseDown={(e) => {
+            e.target.style.backgroundColor = 'rgba(255, 59, 48, 0.2)';
+            e.target.style.transform = 'scale(0.95)';
+          }}
+          onMouseUp={(e) => {
+            e.target.style.backgroundColor = 'rgba(255, 59, 48, 0.1)';
+            e.target.style.transform = 'scale(1)';
           }}
           onMouseLeave={(e) => {
-            e.target.style.backgroundColor = "#dc3545";
-            e.target.style.transform = "scale(1)";
+            e.target.style.backgroundColor = 'rgba(255, 59, 48, 0.1)';
+            e.target.style.transform = 'scale(1)';
           }}
         >
-          🗑️ Delete
-        </Button>
+          Delete
+        </button>
       </div>
-    </ListGroup.Item>
+    </div>
   );
 };
 

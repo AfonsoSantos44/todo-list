@@ -6,47 +6,66 @@ import Button from "react-bootstrap/Button";
 
 const TodoInput = ({ userInput, updateInput = () => {}, addItem }) => {
   return (
-    <InputGroup className="mb-3">
+    <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
       <FormControl
-        placeholder="✍️ What needs to be done?"
-        size="lg"
+        placeholder="New Reminder"
         value={userInput}
         onChange={(e) => updateInput(e.target.value)}
         onKeyPress={(e) => e.key === 'Enter' && addItem()}
-        aria-label="add something"
         style={{
-          borderRadius: '15px 0 0 15px',
-          border: '2px solid #e3f2fd',
-          fontSize: '1.1rem',
-          padding: '12px 20px',
-          boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.05)'
+          backgroundColor: 'rgba(58, 58, 60, 0.8)',
+          border: '1px solid rgba(84, 84, 88, 0.4)',
+          borderRadius: '12px',
+          color: '#ffffff',
+          fontSize: '1rem',
+          padding: '14px 16px',
+          fontWeight: '400',
+          outline: 'none',
+          transition: 'all 0.2s ease',
+          fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
+        }}
+        onFocus={(e) => {
+          e.target.style.backgroundColor = 'rgba(58, 58, 60, 1)';
+          e.target.style.borderColor = 'rgba(10, 132, 255, 0.6)';
+          e.target.style.boxShadow = '0 0 0 4px rgba(10, 132, 255, 0.1)';
+        }}
+        onBlur={(e) => {
+          e.target.style.backgroundColor = 'rgba(58, 58, 60, 0.8)';
+          e.target.style.borderColor = 'rgba(84, 84, 88, 0.4)';
+          e.target.style.boxShadow = 'none';
         }}
       />
       <Button 
-        variant="primary" 
         onClick={addItem}
         style={{
-          borderRadius: '0 15px 15px 0',
-          background: 'linear-gradient(45deg, #667eea, #764ba2)',
+          backgroundColor: '#007AFF',
           border: 'none',
-          padding: '12px 25px',
+          borderRadius: '12px',
+          padding: '14px 20px',
           fontSize: '1rem',
           fontWeight: '600',
-          boxShadow: '0 4px 15px rgba(102, 126, 234, 0.3)',
-          transition: 'all 0.3s ease'
+          color: '#ffffff',
+          minWidth: '80px',
+          transition: 'all 0.2s ease',
+          cursor: 'pointer',
+          fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
         }}
-        onMouseEnter={(e) => {
-          e.target.style.transform = 'translateY(-2px)';
-          e.target.style.boxShadow = '0 6px 20px rgba(102, 126, 234, 0.4)';
+        onMouseDown={(e) => {
+          e.target.style.backgroundColor = '#0056CC';
+          e.target.style.transform = 'scale(0.98)';
+        }}
+        onMouseUp={(e) => {
+          e.target.style.backgroundColor = '#007AFF';
+          e.target.style.transform = 'scale(1)';
         }}
         onMouseLeave={(e) => {
-          e.target.style.transform = 'translateY(0)';
-          e.target.style.boxShadow = '0 4px 15px rgba(102, 126, 234, 0.3)';
+          e.target.style.backgroundColor = '#007AFF';
+          e.target.style.transform = 'scale(1)';
         }}
       >
-        ADD
+        Add
       </Button>
-    </InputGroup>
+    </div>
   );
 };
 
